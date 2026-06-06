@@ -1,0 +1,179 @@
+/* GIOI THIEU PAGE CSS */
+.about-hero {
+    position: relative;
+    padding: 180px 20px 100px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #000 100%);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.about-hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(229, 255, 0, 0.1) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+}
+
+.about-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-hero h1 span {
+    color: var(--primary-color);
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+
+.about-story {
+    padding: 100px 20px;
+    background: #fff;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.story-img {
+    width: 100%;
+    border-radius: 20px;
+    background: var(--bg-light);
+    padding: 40px;
+    position: relative;
+}
+
+.story-img img {
+    width: 100%;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    transform: rotate(-10deg);
+    transition: var(--transition);
+}
+
+.story-img:hover img {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.story-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.story-text p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.about-values {
+    padding: 100px 20px;
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.about-values h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.value-card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.about-stats {
+    padding: 80px 20px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Quản Trị Kicks</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+    <script>
+        // Check Authentication before loading body
+        if (sessionStorage.getItem('kicks_admin_logged_in') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+
+    <header class="admin-header">
+        <a href="../index.html" class="admin-logo" target="_blank">KICKS<span>.</span> Admin</a>
+        <div>
+            <span style="margin-right: 20px;">Xin chào, Admin</span>
+            <button onclick="logout()" class="btn-logout">Đăng Xuất</button>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-toolbar">
+            <h2>Quản Lý Sản Phẩm</h2>
+            <button class="btn-primary" onclick="openModal()"><i class="fa-solid fa-plus"></i> Thêm Sản Phẩm</button>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Danh mục</th>
+                    <th>Giá bán</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="admin-product-list">
+                <!-- Products will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Thêm Sản Phẩm Mới</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label>Tên sản phẩm (*)</label>
+                    <input type="text" id="productName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mô tả chi tiết</label>
+                    <textarea id="productDescription" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit;"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Danh mục</label>
+                    <select id="productCategory">
+                        <option value="lifestyle">Thời trang (Lifestyle)</option>
+                        <option value="running">Chạy bộ (Running)</option>
+                        <option value="basketball">Bóng rổ (Basketball)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Giá bán (VNĐ) (*)</label>
+                    <input type="number" id="productPrice" required min="0" step="1000">
+                </div>
+
+                <div class="form-group">
+                    <label>Hình ảnh (URL / Link ảnh trực tuyến) (*)</label>
+                    <input type="url" id="productImage" placeholder="VD: https://example.com/image.png" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nhãn nổi bật (Tùy chọn)</label>
+                    <input type="text" id="productBadge" placeholder="VD: Mới, -15%">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Hủy</button>
+                    <button type="submit" class="btn-primary">Lưu Sản Phẩm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/products.js"></script>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('kicks_admin_logged_in');
+            window.location.href = 'login.html';
+        }
+
+        // Render admin table
+        function renderAdminTable() {
+            const tbody = document.getElementById('admin-product-list');
+            initializeProducts();
+            const products = getProducts();
+            
+            tbody.innerHTML = '';
+            
+            if (products.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Không có sản phẩm nào.</td></tr>';
+                return;
+            }
+
+            products.forEach(p => {
+                const tr = document.createElement('tr');
+                let imgPath = p.image.startsWith('assets/') ? '../' + p.image : p.image;
+                
+                tr.innerHTML = `
+                    <td><img src="${imgPath}" alt="${p.name}"></td>
+                    <td><strong>${p.name}</strong></td>
+                    <td>${p.category}</td>
+                    <td>${formatPrice(p.price)}</td>
+                    <td>
+                        <button class="btn-action btn-edit" onclick="editProduct('${p.id}')" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn-action btn-delete" onclick="deleteProduct('${p.id}')" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Modal functions
+        const modal = document.getElementById('productModal');
+        const form = document.getElementById('productForm');
+
+        function openModal() {
+            document.getElementById('modalTitle').textContent = 'Thêm Sản Phẩm Mới';
+            form.reset();
+            document.getElementById('productId').value = '';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function generateId() {
+            return 'p' + Date.now();
+        }
+
+        // Form Submit (Create / Update)
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const products = getProducts();
+            const id = document.getElementById('productId').value;
+            
+            const productData = {
+                id: id ? id : generateId(),
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                price: parseInt(document.getElementById('productPrice').value),
+                oldPrice: null,
+                image: document.getElementById('productImage').value,
+                badge: document.getElementById('productBadge').value || null,
+                description: document.getElementById('productDescription').value || '',
+                rating: 5.0,
+                reviews: Math.floor(Math.random() * 100) + 1
+            };
+
+            if (id) {
+                // Update
+                const index = products.findIndex(p => p.id === id);
+                if (index > -1) {
+                    productData.rating = products[index].rating; // keep old rating
+                    productData.reviews = products[index].reviews; // keep old reviews
+                    productData.filterClass = products[index].filterClass; // keep specific filter if any
+                    products[index] = productData;
+                }
+            } else {
+                // Create
+                products.push(productData);
+            }
+
+            localStorage.setItem('kicks_products_v4', JSON.stringify(products));
+            closeModal();
+            renderAdminTable();
+        });
+
+        // Edit Product
+        window.editProduct = function(id) {
+            const products = getProducts();
+            const product = products.find(p => p.id === id);
+            
+            if (product) {
+                document.getElementById('modalTitle').textContent = 'Sửa Sản Phẩm';
+                document.getElementById('productId').value = product.id;
+                document.getElementById('productName').value = product.name;
+                document.getElementById('productCategory').value = product.category;
+                document.getElementById('productPrice').value = product.price;
+                document.getElementById('productBadge').value = product.badge || '';
+                document.getElementById('productDescription').value = product.description || '';
+                document.getElementById('productImage').value = product.image;
+
+                modal.style.display = 'flex';
+            }
+        };
+
+        // Delete Product
+        window.deleteProduct = function(id) {
+            if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này? Thao tác không thể hoàn tác!')) {
+                let products = getProducts();
+                products = products.filter(p => p.id !== id);
+                localStorage.setItem('kicks_products_v4', JSON.stringify(products));
+                renderAdminTable();
+            }
+        };
+
+        // Initialize table
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminTable();
+        });
+    </script>
+</body>
+</html>

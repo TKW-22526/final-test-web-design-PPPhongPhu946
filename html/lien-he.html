@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Kicks</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lien-he.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="../index.html">KICKS<span>.</span></a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../index.html">Trang Chủ</a></li>
+                    <li><a href="san-pham.html">Sản Phẩm</a></li>
+                    <li><a href="gioi-thieu.html">Về Chúng Tôi</a></li>
+                    <li><a href="lien-he.html" class="active">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <a href="auth.html" class="action-btn user-btn" aria-label="Tài khoản"><i class="fa-solid fa-user"></i><span class="user-name-display" style="display:none; font-size:14px; margin-left:5px;"></span></a>
+                <a href="gio-hang.html" class="action-btn" aria-label="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" style="display:none;">0</span></a>
+                <button class="action-btn menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container contact-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Liên Hệ Với Chúng Tôi</h2>
+                <p>Chúng tôi luôn sẵn sàng lắng nghe và giải đáp mọi thắc mắc của bạn. Vui lòng để lại thông tin hoặc liên hệ trực tiếp qua các kênh dưới đây.</p>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-location-dot"></i> 123 Phan Đình Phùng, Tỉnh Vĩnh Long</li>
+                    <li><i class="fa-solid fa-phone"></i> 1900 1234</li>
+                    <li><i class="fa-solid fa-envelope"></i> phongphu162020@gmail.com</li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Họ và Tên</label>
+                        <input type="text" id="name" placeholder="Nhập họ và tên..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Nhập địa chỉ email..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nội Dung Thắc Mắc </label>
+                        <textarea id="message" placeholder="Bạn cần hỗ trợ gì?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Gửi Tin Nhắn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kicks. All rights reserved. Thiết kế bởi PPPhongPhu946.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kicks - Giày Thể Thao Chính Hãng</title>
+    <meta name="description" content="Kicks - Nền tảng thương mại điện tử chuyên cung cấp giày thể thao chính hãng, thiết kế hiện đại, chất lượng hàng đầu.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html">KICKS<span>.</span></a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Trang Chủ</a></li>
+                    <li><a href="html/san-pham.html">Sản Phẩm</a></li>
+                    <li><a href="html/gioi-thieu.html">Về Chúng Tôi</a></li>
+                    <li><a href="html/lien-he.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <a href="html/auth.html" class="action-btn user-btn" aria-label="Tài khoản"><i class="fa-solid fa-user"></i><span class="user-name-display" style="display:none; font-size:14px; margin-left:5px;"></span></a>
+                <a href="html/gio-hang.html" class="action-btn" aria-label="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" style="display:none;">0</span></a>
+                <button class="action-btn menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-title">Bước Đi <span>Khác Biệt</span></h1>
+                <p class="hero-subtitle">Khám phá bộ sưu tập giày thể thao mới nhất. Thiết kế đột phá, hiệu năng tối đa cho mọi hoạt động của bạn.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Mua Ngay</a>
+                    <a href="#about" class="btn btn-outline">Tìm Hiểu Thêm</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h4>10k+</h4>
+                        <p>Khách hàng</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>500+</h4>
+                        <p>Mẫu giày</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>4.9</h4>
+                        <p>Đánh giá</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-circle"></div>
+                <img src="assets/images/sneaker_1_1780630524347.png" alt="Sneaker Hiện Đại" class="hero-image floating">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <div class="brands-inner">
+                <h2>Các Thương Hiệu Nổi Bật</h2>
+                <div class="brands-list">
+                    <i class="fa-brands fa-nike"></i>
+                    <i class="fa-brands fa-adidas"></i>
+                    <i class="fa-solid fa-shoe-prints"></i>
+                    <i class="fa-brands fa-neos"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="running">Chạy bộ</button>
+                    <button class="filter-btn" data-filter="lifestyle">Thời trang</button>
+                    <button class="filter-btn" data-filter="basketball">Bóng rổ</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-grid-container">
+                <!-- Products will be dynamically loaded here by js/products.js -->
+            </div>
+            
+            <div class="view-all-container">
+                <a href="html/san-pham.html" class="btn btn-outline">Xem Tất Cả Sản Phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta section">
+        <div class="container">
+            <div class="cta-inner">
+                <div class="cta-content">
+                    <h2>Thiết Kế Dành Riêng Cho Bạn</h2>
+                    <p>Đăng ký thành viên Kicks Club ngay hôm nay để nhận ưu đãi 15% cho đơn hàng đầu tiên và nhiều đặc quyền hấp dẫn khác.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Nhập địa chỉ email của bạn..." required>
+                        <button type="submit" class="btn btn-primary">Đăng Ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="footer-logo">KICKS<span>.</span></a>
+                    <p>Mang đến cho bạn những đôi giày thể thao chất lượng nhất, giúp bạn tự tin trên mỗi bước đi.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Cửa Hàng</h4>
+                    <ul>
+                        <li><a href="#">Giày Nam</a></li>
+                        <li><a href="#">Giày Nữ</a></li>
+                        <li><a href="#">Bộ Sưu Tập Mới</a></li>
+                        <li><a href="#">Khuyến Mãi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Trạng Thái Đơn Hàng</a></li>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Chọn Size</a></li>
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> 123 Đường Tên, TP.HCM</li>
+                        <li><i class="fa-solid fa-phone"></i> 1900 xxxx</li>
+                        <li><i class="fa-solid fa-envelope"></i> support@kicks.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kicks. All rights reserved. Thiết kế bởi PPPhongPhu946.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

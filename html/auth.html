@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập / Đăng ký - Kicks</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body class="auth-page">
+
+    <a href="../index.html" class="back-to-home"><i class="fa-solid fa-arrow-left"></i> Về Trang Chủ</a>
+
+    <div class="auth-container" id="authContainer">
+        
+        <!-- Forms Section -->
+        <div class="auth-forms-container">
+            
+            <!-- Đăng nhập -->
+            <form id="signInForm" class="auth-form sign-in-form">
+                <h2 class="auth-title">Đăng Nhập</h2>
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
+                </div>
+                
+                <button type="submit" class="btn-auth">Đăng Nhập</button>
+                <p id="loginError" style="color: red; font-size: 0.9rem; text-align: center; display: none;"></p>
+            </form>
+
+            <!-- Đăng ký -->
+            <form id="signUpForm" class="auth-form sign-up-form">
+                <h2 class="auth-title">Đăng Ký</h2>
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="registerName" placeholder="Họ và Tên" required>
+                </div>
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                </div>
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="registerPassword" placeholder="Mật khẩu" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="registerConfirmPassword" placeholder="Xác nhận mật khẩu" required>
+                </div>
+                
+                <button type="submit" class="btn-auth">Tạo Tài Khoản</button>
+                <p id="registerError" style="color: red; font-size: 0.9rem; text-align: center; display: none;"></p>
+            </form>
+
+        </div>
+
+        <!-- Panels Section -->
+        <div class="auth-panels-container">
+            <div class="content panel-register-content">
+                <h3>Chưa có tài khoản?</h3>
+                <p>Tham gia cùng KICKS để nhận những ưu đãi đặc biệt và trải nghiệm mua sắm sneaker đỉnh cao.</p>
+                <button class="btn-transparent" id="signUpBtn">Đăng Ký Ngay</button>
+            </div>
+            <div class="content panel-login-content">
+                <h3>Đã là thành viên?</h3>
+                <p>Đăng nhập vào tài khoản của bạn để xem giỏ hàng và lịch sử mua sắm.</p>
+                <button class="btn-transparent" id="signInBtn">Đăng Nhập</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main JS -->
+    <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -175,10 +175,10 @@ Sinh viên cần nộp đầy đủ các nội dung sau:
 Sinh viên cập nhật thông tin cá nhân tại đây:
 
 ```text
-Họ và tên:
-Mã số sinh viên:
-Lớp:
-Tên đề tài:
-Liên kết GitHub repository:
-Liên kết GitHub Pages:
+Họ và tên: [Nhập họ và tên của bạn]
+Mã số sinh viên: [Nhập mã số sinh viên]
+Lớp: [Nhập tên lớp]
+Tên đề tài: Website Bán Hàng Thể Thao (Kicks)
+Liên kết GitHub repository: https://github.com/PPPhongPhu946/final-test-web-design-PPPhongPhu946
+Liên kết GitHub Pages: https://PPPhongPhu946.github.io/final-test-web-design-PPPhongPhu946/
 ```
